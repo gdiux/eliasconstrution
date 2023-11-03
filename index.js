@@ -40,11 +40,8 @@ from the specified directory. In this case, it is serving files from the 'public
 app.use(express.static('public'));
 
 // RUTAS
-app.use('/api/candidates', require('./routes/candidates.route'));
-app.use('/api/centers', require('./routes/centers.route'));
-app.use('/api/mesas', require('./routes/mesas.route'));
-app.use('/api/uploads', require('./routes/uploads.route'));
-app.use('/api/votos', require('./routes/votos.route'));
+app.use('/api/cotizaciones', require('./routes/cotizaciones.route'));
+app.use('/api/newsletter', require('./routes/newsletter.route'));
 
 /* The `app.get('*', (req, res) => { ... })` code block is a route handler that is used to handle all
 GET requests that do not match any of the defined routes. */

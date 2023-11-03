@@ -1,5 +1,5 @@
 /** =====================================================================
- *  CENTERS ROUTER 
+ *  COTIZACIONES ROUTER 
 =========================================================================*/
 const { Router } = require('express');
 const { check } = require('express-validator');
@@ -8,19 +8,22 @@ const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 
 // CONTROLLERS
-const { getCenters, getCenterId } = require('../controllers/centers.controller');
+const { postCotizacion } = require('../controllers/cotizaciones.controller');
 
 const router = Router();
-
 /** =====================================================================
- *  POST CENTER
+ *  POST VOTO
 =========================================================================*/
-router.post('/query', getCenters);
+router.post('/', [
+        check('email', 'email is mandatory').isEmail(),
+        check('name', 'names are mandatory').not().isEmpty(),
+        check('address', 'the address is mandatory').not().isEmpty(),
+        check('phone', 'the phone is mandatory').not().isEmpty(),
+        validarCampos
+    ],
+    postCotizacion
+);
 
-/** =====================================================================
- *  GET CENTER ID
-=========================================================================*/
-router.get('/:id', getCenterId);
 
 // EXPORT
 module.exports = router;

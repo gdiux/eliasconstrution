@@ -1,5 +1,5 @@
 /** =====================================================================
- *  MESAS ROUTER 
+ *  NEWSLETTER ROUTER 
 =========================================================================*/
 const { Router } = require('express');
 const { check } = require('express-validator');
@@ -8,20 +8,19 @@ const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 
 // CONTROLLERS
-const { getMesas, getMesasId } = require('../controllers/mesas.controller');
-
+const { postNewsletter } = require('../controllers/newsletter.controller');
 
 const router = Router();
-
 /** =====================================================================
- *  POST MESA
+ *  POST NEWSLETTER
 =========================================================================*/
-router.post('/query', getMesas);
+router.post('/', [
+        check('email', 'email is mandatory').isEmail(),
+        validarCampos
+    ],
+    postNewsletter
+);
 
-/** =====================================================================
- *  GET MESA ID
-=========================================================================*/
-router.get('/:id', getMesasId);
 
 // EXPORT
 module.exports = router;

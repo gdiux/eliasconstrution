@@ -11,11 +11,8 @@ const dbConection = async() => {
         /* The code `const connection = await mongoose.connect(process.env.DB_CNN, { useNewUrlParser:
         true, useUnifiedTopology: true, useCreateIndex: true });` is establishing a connection to a
         MongoDB database using the `mongoose` library. */
-        const connection = await mongoose.connect(process.env.DB_CNN, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        
+        const connection = await mongoose.connect(process.env.DB_CNN);
+
         console.log('DB Online');
 
     } catch (error) {
