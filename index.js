@@ -3,6 +3,7 @@ require('dotenv').config();
 const path = require('path');
 
 const express = require('express');
+const robots = require('express-robots-txt')
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
@@ -32,6 +33,9 @@ app.use(express.urlencoded({ limit: '50mb', extended: true, parameterLimit: 5000
 `dbConection();` is a function that establishes a connection to the database. It is likely defined
 in the `./database/config` file and is called to connect to the database before starting the server. */
 dbConection();
+
+// ROBOTS
+app.use(robots(__dirname + '/robots.txt'));
 
 /* 
 ? DIRECTORIO PUBLICO
